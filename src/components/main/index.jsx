@@ -9,7 +9,7 @@ class Main extends Component {
     };
     addAction() {
         const payload = {
-            id: this.props.list.length > 0 ?this.props.list[this.props.list.length - 1].id + 1 : 1,
+            id: this.props.list.length > 0 ? this.props.list[this.props.list.length - 1].id + 1 : 1,
             title: this.state.listTitle,
             createTime: new Date(),
             endTime: ""
