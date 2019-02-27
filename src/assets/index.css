@@ -31,7 +31,10 @@ footer {
     position: relative;
     height: 100px;
     line-height: 100px;
-    background: cornflowerblue;
+    background: #fff;
+    border-bottom: 1px solid #e8e8e8;
+    font-size: 36px;
+    overflow: hidden;
 }
 
 /* header */
@@ -46,17 +49,75 @@ header .add-list {
 /* main */
 .main {
     min-height: calc(100vh - 200px);
-    background: bisque;
+    background: #f0f2f5;
 }
 .main ul {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 .item {
-    padding: 10px;
+    position: relative;
     margin: 10px;
-    background-color: darkgray;
+    background-color: #fff;
     border-radius: 2px;
+    flex: 0 1 270px;
+    border: 1px solid #e8e8e8;
+    min-height: 100px;
+}
+.item:first-child {
+    display: flex;
+    padding: 0 15px;
+    font-size: 14px;
+    cursor: pointer;
+    border: 1px dashed #d9d9d9;
+    align-items: center;
+    justify-content: center;
+}
+.item:first-child span {
+    display: inline-block;
+    vertical-align: middle;
+}
+.item:first-child:hover {
+    border-color: #40a9ff;
+}
+.item p {
+    height: 56px;
+    line-height: 56px;
+    margin: 0;
+}
+.item .item-ctr {
+    display: flex;
+    justify-content: space-around;
+    background: #f7f9fa;
+    border-top: 1px solid #e8e8e8;
+}
+.item .item-ctr span {
+    width: 100%;
+    padding: 10px 0;
+}
+.item .item-ctr span:first-child {
+    border-right: 1px solid #e8e8e8;
+}
+.item .item-ctr span:first-child:hover {
+    cursor: pointer;
+    color: #40a9ff;
+}
+.item .item-ctr span:last-child:hover {
+    cursor: pointer;
+    color: #ff4d4f;
+}
+.done {
+    position: absolute;
+    top: 8%;
+    right: 5%;
+    font-size: 40px;
+}
+.item.isDone {
+    color: rgba(0, 0, 0, 0.45);
+}
+.item.isDone .item-ctr span:hover {
+    color: rgba(0, 0, 0, 0.45);
+    cursor: not-allowed;
 }
 
-/* assets */

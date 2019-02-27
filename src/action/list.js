@@ -13,7 +13,7 @@ const actions = {
         return axios.delete(`${url}/${payload.id}`);
     },
     update (payload) {
-        return axios.put(url, payload);
+        return axios.put(`${url}/${payload.id}`, payload);
     }
 }
 
