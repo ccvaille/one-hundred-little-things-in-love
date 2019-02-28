@@ -120,4 +120,10 @@ header .add-list {
     color: rgba(0, 0, 0, 0.45);
     cursor: not-allowed;
 }
+.item time {
+    position: absolute;
+    top: 2px;
+    left: 4px;
+    font-size: 12px;
+}
 

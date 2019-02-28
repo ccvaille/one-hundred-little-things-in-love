@@ -8,10 +8,15 @@ class Main extends Component {
         listTitle: ""
     };
     addAction() {
+        if (!this.state.listTitle) return;
         const payload = {
-            id: this.props.list.length > 0 ? this.props.list[this.props.list.length - 1].id + 1 : 1,
+            id:
+                this.props.list.length > 0
+                    ? this.props.list[this.props.list.length - 1].id + 1
+                    : 1,
             title: this.state.listTitle,
             createTime: new Date(),
+            time: "",
             endTime: ""
         };
         list.actions.add(payload).then(() => {
@@ -55,7 +60,7 @@ class Main extends Component {
                         </span>
                     </li>
                     {this.props.list &&
-                        this.props.list.map(i => {
+                        this.props.list.map((i, index) => {
                             const isDone = i.endTime.length > 0;
                             return (
                                 <li
@@ -64,7 +69,9 @@ class Main extends Component {
                                         isDone > 0 ? "item isDone" : "item"
                                     }
                                 >
-                                    <p>{i.title}</p>
+                                    <p>
+                                        {index + 1}、 一起{i.title}
+                                    </p>
                                     <div className="item-ctr">
                                         <span
                                             onClick={() => {
@@ -73,7 +80,8 @@ class Main extends Component {
                                                     id: i.id,
                                                     title: i.title,
                                                     createTime: i.createTime,
-                                                    endTime: new Date()
+                                                    endTime: new Date(),
+                                                    time: new Date().toLocaleDateString()
                                                 });
                                             }}
                                         >
@@ -93,11 +101,14 @@ class Main extends Component {
                                         </Popconfirm>
                                     </div>
                                     {isDone ? (
-                                        <Icon
-                                            type="smile"
-                                            theme="twoTone"
-                                            className="done"
-                                        />
+                                        <div>
+                                            <Icon
+                                                type="smile"
+                                                theme="twoTone"
+                                                className="done"
+                                            />
+                                            <time>{i.time}</time>
+                                        </div>
                                     ) : null}
                                 </li>
                             );
@@ -111,7 +122,9 @@ class Main extends Component {
                     onCancel={() => this.setModalVisible(false)}
                 >
                     <Input
+                        ref={input => input && input.focus()}
                         value={this.state.listTitle}
+                        onPressEnter={() => this.addAction()}
                         onChange={e => {
                             this.setListTitle(e);
                         }}
